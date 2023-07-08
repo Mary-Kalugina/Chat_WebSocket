@@ -1,18 +1,10 @@
 import "./css/style.css";
-import "./js/Render";
-import "./js/WidgetControl";
-import EventController from "./js/EventController";
-import Requests from "./js/Requests";
-const eventController = new EventController();
-const requests = new Requests();
+import "./css/modal.css";
+import Chat from "./js/Chat";
+import WebSocketConnection from "./js/WebSocket";
 
-document.addEventListener("click", (e) => {
-  e.preventDefault();
-  if (e.target.classList.contains("button")) {
-    eventController.checkButton(e);
-  }
-});
+const chat = new Chat();
 
 document.addEventListener("DOMContentLoaded", () => {
-  requests.getAllTickets();
+  chat.init();
 });
