@@ -140,3 +140,31 @@ body {
     margin-right: auto;
     text-align: left;
   }
+
+  .widget {
+    width: 40%;
+    background-color: gainsboro;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    z-index: 1;
+    position: absolute;
+    top: calc(50% - 175px);
+    left: calc(50% - 250px);
+  }
+
+  .input_name {
+    width: 80%;
+    align-self: center;
+    height: 30px;
+    border-radius: 3px;
+  }
+
+  .submit_name {
+    width: 80%;
+    align-self: center;
+    height: 30px;
+    background-color: grey;
+    margin: 7px;
+    border-radius: 3px;
+  }

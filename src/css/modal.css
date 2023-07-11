@@ -25,11 +25,8 @@
   
   .modal__header {
     text-align: center;
-    background-color: #dee2e1;
-    padding: 15px 10px;
     font-size: 18px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
   }
   
   .modal__body {
