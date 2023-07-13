@@ -7,6 +7,6 @@ export default class ChatAPI {
   }
 
   subscribeOnEvents() {
-    this.chatSend.addEventListener("click", this.ws.send());
+    this.chatSend.addEventListener("click", this.ws.sendMessage.bind(this));
   }
 }

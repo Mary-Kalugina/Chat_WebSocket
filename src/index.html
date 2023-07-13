@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
-  <div id="root">
-    <div class="container">
-    <div class="chat__userlist">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="widget">
+      <h4 class="modal__header">Choose nickname</h4>
+      <input type="text" class="input_name" />
+      <div class="error_message"></div>
+      <button type="submit" class="submit_name">Continue</button>
     </div>
+    <div class="container">
+      <div class="chat__userlist"></div>
       <div class="chat chat__container">
         <div class="chat__area"></div>
         <div class="form__group">
-          <input class="chat_input chat__messages-input form__input"/>
-          <button class="chat_send">Send</button>
+          <input class="chat_input chat__messages-input form__input" />
+          <button class="chat_send" type="submit">Send</button>
         </div>
-        
       </div>
     </div>
-  </div>
-  
-</body>
+  </body>
 </html>

@@ -8,7 +8,9 @@ export default class Chat {
                       <div class="kinda_img"></div>
                       <p class="nickname">${name}</p>
                       </div>`;
-    document.querySelector(".chat__userlist").append(chatUser);
+    document
+      .querySelector(".chat__userlist")
+      .insertAdjacentHTML("afterBegin", chatUser);
   }
 
   renderMessage(message, name) {
