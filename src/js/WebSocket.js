@@ -4,8 +4,9 @@ export default class WebSocketConnection {
   constructor() {
     this.apiUrl = "https://chat-on-websocket.onrender.com";
     this.chat = new Chat();
-    this.ws = new WebSocket("wss://chat-on-websocket.onrender.com");
+    this.ws = null;
     this.user = null;
+    this.chatSend = document.querySelector(".chat_send");
   }
 
   add(user) {
@@ -21,6 +22,7 @@ export default class WebSocketConnection {
         try {
           const result = JSON.parse(xhr.response);
           this.user = result.user;
+          this.ws = new WebSocket("wss://chat-on-websocket.onrender.com");
           this.removeWidget();
           this.chat.onEnterChatHandler(this.user.id, this.user.name);
           this.subscribeOnEvents();
@@ -49,23 +51,26 @@ export default class WebSocketConnection {
   }
 
   sendMessage() {
+    console.log(this);
     const chatInput = document.querySelector(".chat_input");
     const message = chatInput.value;
 
     if (!message) return;
-    console.log(this.ws);
-    this.ws.send(
-      JSON.stringify({
-        user: this.user,
-        type: "send",
-        message,
-      })
-    );
+    console.log(this.user, "user");
+    const body = JSON.stringify({
+      user: this.user,
+      type: "send",
+      message,
+    });
+    console.log(body, "body");
+    this.ws.send(body);
 
     chatInput.value = "";
   }
 
   subscribeOnEvents() {
+    this.chatSend.addEventListener("click", this.sendMessage.bind(this));
+
     this.ws.addEventListener("open", (e) => {
       console.log("ws open");
     });
@@ -88,6 +93,8 @@ export default class WebSocketConnection {
     });
 
     this.ws.addEventListener("message", (e) => {
+      console.log(e.data);
+
       const data = JSON.parse(e.data);
       data.user.id === this.user.id
         ? this.chat.renderMessage(data.message, "You")

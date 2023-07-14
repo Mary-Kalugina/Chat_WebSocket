@@ -18,22 +18,25 @@ export default class Chat {
     if (name === "You") {
       addClass = "message__container-yourself";
     }
-
-    this.chat
-      .appendChild(`<div class="chat_message message__container ${addClass}">
-          <div class="message__header">${name}, ${this.time()}</div>
-          <div class="message_text">${message}</div>
-          </div>`);
+    let html = `<div class="chat_message message__container ${addClass}">
+    <div class="message__header">${name}, ${this.time()}</div>
+    <div class="message_text">${message}</div>
+    </div>`;
+    this.chat.insertAdjacentHTML("beforeEnd", html);
   }
 
   time() {
     let month = new Date().getMonth();
+    let hours = new Date().getHours();
+    let minutes = new Date().getMinutes();
     if (month.toString().length === 1) {
       month = "0" + month.toString();
     }
-    let hours = new Date().getHours();
     if (hours.toString().length === 1) {
       hours = "0" + hours.toString();
+    }
+    if (minutes.toString().length === 1) {
+      hours = "0" + minutes.toString();
     }
     return (
       new Date().getDate() +
@@ -44,7 +47,7 @@ export default class Chat {
       "   " +
       hours +
       ":" +
-      new Date().getMinutes()
+      minutes
     );
   }
 }
